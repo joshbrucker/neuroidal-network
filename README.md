@@ -2,14 +2,14 @@
 
 ## Running Flask
 
-First, install Flask: pip install flask
+First, install Flask: `pip install flask`
 
 ### Mac/Linux
-export FLASK_APP=main.py
+`export FLASK_APP=main.py`
 
-flask run
+`flask run`
 
 ### Windows
-set FLASK_APP=main.py
+`set FLASK_APP=main.py`
 
-flask run
+`flask run`
