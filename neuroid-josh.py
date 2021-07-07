@@ -1,12 +1,11 @@
 import numpy as np
 
-
 class Neuroid:
-    def __init__(self):
-        self.umbr = 2
-        self.beta = 2
-        self.kr = 2
-        self.maxcount = 2
+    def __init__(self, umbr, beta, kr, maxcount):
+        self.umbr = umbr
+        self.beta = beta
+        self.kr = kr
+        self.maxcount = maxcount
 
         self.count1 = 0
         self.count2 = 0
@@ -23,6 +22,7 @@ class Neuroid:
 
     def run_comparator(self, inputs, weights):
         weighted_sum = sum([w * i for w in weights for i in inputs])
+
         if weighted_sum >= self.umbr:
             if self.count1 > self.beta / (weighted_sum - self.umbr):
                 self.count1 = 0
@@ -30,6 +30,7 @@ class Neuroid:
                 self.count1 += 1
         else:
             self.count1 = 0
+
 
     def run_freq_modulator(self):
         if self.count1 == 1:
@@ -51,17 +52,18 @@ class Neuroid:
         if len(inputs) != len(weights):
             raise Exception("Size of inputs and size of weights must be the same!")
 
-        for i in range(len(weights)):
-            self.run_comparator(inputs[:i], weights[:i])
+        for i in range(len(weights) - self.maxcount):
+            self.run_comparator(inputs[i:(i + self.maxcount)], weights[i:(i + self.maxcount)])
             self.run_freq_modulator()
             self.run_freq_demodulator()
+            print(self.nt_out)
 
 
 def main():
-    inputs = [1, 2, 3, 2, 1]
-    weights = [1, 2, 3, 2, 1]
+    inputs = [1, 1, 1, 1, 1]
+    weights = [1, 1, 1, 1, 1]
 
-    neuroid = Neuroid()
+    neuroid = Neuroid(umbr=0.1, beta=1.25, kr=2.1, maxcount=24, logging=True)
     neuroid.run_neuroid(inputs, weights)
 
 

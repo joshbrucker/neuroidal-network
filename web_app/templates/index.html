@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> <!-- import Bootstrap CSS -->
+	<script src="https://kit.fontawesome.com/6852c7cebf.js" crossorigin="anonymous"></script> 
+	<!-- import  FontAwesome For icons-->
+	<script type="text/javascript" src="javascript/project.js"></script> <!-- connect JavaScript functions-->
+	<title>Neuroidal Simulator</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <!-- import Bootstrap JS -->
+
+	<div class="container" id="header" style="background: #F39CB3;">
+		<br>
+
+		<h1 style="text-align: center; color: white;">Tinker with a <b>Neural Network</b> Right Here in Your Browser.</h1> 
+		<h1 style="text-align: center; color: white;">It is a Neuroidal Simulator for Detecting Arrhythmia.</h1> 
+
+		<br>
+	</div>
+
+	<br>
+	<div class="container" id="headerControls" >
+		<div class="row">
+				<div class="col" id="playControls"> <!-- replay, play, fast forward buttons for the training -->
+						<div class="btn-group" role="group"> 
+							<button type="button" class="btn btn-danger btn-lg" id="replayButton"> 
+								<i class="fas fa-redo"></i> 
+							</button>
+							<button type="button" class="btn btn-danger btn-lg" id="playButton"> 
+								<i class="fas fa-play"></i> 
+							</button>
+							<button type="button" class="btn btn-danger btn-lg" id="fastForwardButton"> 
+								<i class="fas fa-fast-forward"></i>
+							</button>
+						</div>
+				</div>
+				<div class="col">
+					<form>
+						<div class="form-row align-items-center">
+					    <div class="col-auto my-1">
+					      <label class="mr-sm-2" for="numberOfNeuroids">Number of Neuroids:</label>
+					      <input type="text" name="numberOfNeuroids" id="numberOfNeuroids">
+					  	</div>
+					  	<button type="submit" id="Layers" class="btn btn-danger" onclick="getNeuroids()"> Submit</button>
+					  	</div>
+					</form>
+				</div>
+				<div class="col">
+					<form>
+					<div class="form-row align-items-center">
+					    <div class="col-auto my-2">
+					      <label class="mr-sm-2" for="hiddenLayers">Number of Hidden Layers</label>
+					      <input type="text" name="hiddenLayers" id="hiddenLayers">
+					  	</div>
+					  <button type="submit" id="Layers" class="btn btn-danger" onclick="getLayers()"> Submit</button>
+					</div>
+					</form>
+				</div>
+				<div class="col">
+					<form>
+					<div class="form-row align-items-center">
+					  <div class="col-auto my-2">
+					      <label class="mr-sm-2" for="weights">Weights for Layers (comma separated list)</label>
+					      <input type="text" name="weights" id="weights">
+					  </div>
+					  <button type="submit" id="Layers" class="btn btn-danger" onclick="getWeights()"> Submit</button>
+					</div>
+					</form>
+				</div>
+		</div>
+	</div>
+			
+				 
+					
+				
+
+
+<div class="container" id="body" >
+	<br/>
+	<div class="row">
+		<div class="col-sm-3">
+			<h5>Build Your Neuroid(s)</h5>
+			<h6>Use this form to input data to customize!</h6>
+			<form>
+					<div class="form-group">
+						<label for="KrValue">Kr</label>
+							<input type="text" class="form-control" name="KrValue" id="KrValue">
+					</div>
+					<div class="form-group">
+						<label for="umbrValue">umbr</label>
+							<input type="text" class="form-control" name="umbrValue" id="umbrValue">
+					</div>
+					<div class="form-group">
+						<label for="BetaValue">Beta</label>
+							<input type="text" class="form-control" name="BetaValue" id="BetaValue">
+					</div>
+					<div class="form-group">
+						<label for="maxcountValue">Max Count</label>
+							<input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+					</div>
+				<br>
+				 <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
+				  onclick="getNeuroidProperties()">Submit</button>
+			</form>
+
+			
+		</div>
+		<div class="col-sm-2" id="NeuroidVisualization">
+			<span>
+				<p>X1 <i class="fas fa-square fa-5x" id="neuroid1"></i></p>
+			</span>
+			<!--<span>
+				<p>X2 <i class="fas fa-square fa-5x" id="neuroid2"></i></p>
+			</span> -->
+			
+		</div>
+		
+
+
+		<div class="col-sm-2">
+			
+
+		</div>
+		<div class="col-sm-1">
+			
+		</div>
+
+		<div class="col-sm-3">
+
+			<div class = "output" align="right">
+				<img src="output.png" alt="example output" width="250" height="250" padding-top= 200px>
+				<p style="margin-right: 0px">Colors shows data, neuron <br> and weight values</p>
+				<input type="checkbox" id="testdata" name="testdata">
+				<label for="testdata" style="margin-right: 80px">Show test data</label><br>
+				<input type="checkbox" id="discretize" name="discretize">
+				<label for="discretize" style="margin-right: 63px">Discretize output</label><br>
+			</div>
+
+		</div>
+
+
+	</div>
+
+</body>
+</html>
