@@ -2,6 +2,8 @@
 
 ## Running Flask
 
+First, install Flask: pip install flask
+
 ### Mac/Linux
 export FLASK_APP=main.py
 
