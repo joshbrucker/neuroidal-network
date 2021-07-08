@@ -96,6 +96,10 @@
 				<br>
 
 				<button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Submit</button>
+				<div>{% if results is defined %}
+					{{ results }}	
+					{% endif %}
+				</div>
 			</form>
 
 			
@@ -132,6 +136,7 @@
 			</div>
 
 		</div>
+
 
 	
 	</div>

@@ -6,6 +6,7 @@ import neuroid
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -20,4 +21,4 @@ def input():
 
     result = neuroid.run(umbr, beta, kr, maxcount)
 
-    return result
+    return render_template('index.html', results=result)
