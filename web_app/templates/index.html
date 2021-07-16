@@ -388,15 +388,6 @@
 				</canvas>		
 			</div>
 
-
-			<div class = "output" align="right">
-				<img src="{{url_for('static', filename='images/output.png')}}" alt="example output" width="250" height="250" padding-top= 200px>
-				<p style="margin-right: 0px">Colors shows data, neuron <br> and weight values</p>
-				<input type="checkbox" id="testdata" name="testdata">
-				<label for="testdata" style="margin-right: 80px">Show test data</label><br>
-				<input type="checkbox" id="discretize" name="discretize">
-				<label for="discretize" style="margin-right: 63px">Discretize output</label><br>
-
 			<div class="col-sm-1" id = "rightBoxes">
 				<div class="row" id="neuronArea">
 					<div class="col" id="neuron">
@@ -413,7 +404,7 @@
 
 			<div class="col-5" id = "output" style="padding-left:225px;">
 				<div class="output">
-					<img src="output.png" alt="example output" width="250" height="250">
+					<img src="{{url_for('static', filename='images/output.png')}}" alt="example output" width="250" height="250" padding-top= 200px>
 					<p style="margin-right: 0px">Colors shows data, neuron <br> and weight values</p>
 					<input type="checkbox" id="testdata" name="testdata">
 					<label for="testdata" style="margin-right: 80px">Show test data</label><br>
