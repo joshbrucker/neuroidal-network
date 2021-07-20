@@ -401,48 +401,58 @@
 			<div class="col-5" id = "output" style="padding-left:225px;">
 				<div class="output">
 					<canvas id="outputChart" width="500" height="500" style="background: black;"></canvas>
+					<p id="outputData">
+						{% if results is defined %}
+						{{ results }}	
+						{% endif %}
+						</p>
 					<script>
+					var dataList = document.getElementById('outputData').innerHTML;
+					var values = dataList.split(',');
+					var time = [];
+						for (var i = 0; i <= values.length; i++) {
+							time[i] = i;
+						}
+
+						
 					var ctx = document.getElementById('outputChart').getContext('2d');
 					var outputChart = new Chart(ctx, {
-					    type: 'line',
-					    data: {
-					        labels: ['1', '2', '3', '4', '5', '6'],
-					        datasets: [{
-					        	label: 'Neuroid Output',
-					            data: [12, 19, 3, 5, 2, 3],
-					            backgroundColor: [
-					                'rgb(255, 215, 0)'
-					            ],
-					            pointStyle: 'line',
-					            borderColor: 'rgb(255, 215, 0)',
-					            borderWidth: 1
-					        }]
-					    },
-					    options: {
-					        scales: {
+					    type: "line",
+						  data: {
+						  	labels: time,
+						  	datasets: [{
+						  			  label: "Neuroidal Output",
+								      backgroundColor: "rgb(255, 215, 0)",
+								      borderColor: "rgb(255, 215, 0)",
+								      pointStyle: "line",
+								      data: values
+								    }]
+						  },
+						  options: {
+						  	scales: {
 					            y: {
 					                beginAtZero: true
 					            }
 					        },
 					        legend: {
-            						display: false
+            						display: true
+            						
          						},
          				    tooltips: {
             						enabled: false
         						 }
-					    }
+						  }
 					});
+					
+					console.log(time);
+					console.log(values);
 					</script>
 					<p style="margin-right: 0px">Colors shows data, neuron <br> and weight values</p>
 					<input type="checkbox" id="testdata" name="testdata">
 					<label for="testdata" style="margin-right: 80px">Show test data</label><br>
 					<input type="checkbox" id="discretize" name="discretize">
 					<label for="discretize" style="margin-right: 63px">Discretize output</label><br>
-						<div id="output">
-						{% if results is defined %}
-						{{ results }}	
-						{% endif %}
-						</div>
+						
 				</div>
 
 			</div>
