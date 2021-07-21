@@ -171,7 +171,7 @@
 						<label class="mr-sm-2" for="numberOfNeuroids">Number&nbsp;of&nbsp;Neuroids:&nbsp;</label>
 					    <input type="text" name="numberOfNeuroids" id="numberOfNeuroids">
 				  	</div>
-				
+				</form>
 			</div>
 			<div class="col-3">
 			
@@ -193,7 +193,6 @@
 				<button type="submit" id="Layers" class="btn btn-danger" onclick="getWeights()"> Submit</button>
 			
 			</div>
-			</form>
 			</div>
 		</div>
 
@@ -236,19 +235,19 @@
 		   					 <form class="px-4 py-3" action="{{ url_for('input') }}" method="POST">
 		   					 	<div class="form-group">
 									<label for="KrValue">Kr</label>
-										<input type="text" class="form-control" name="KrValue" id="KrValue">
+									<input type="text" class="form-control" name="kr" id="kr">
 								</div>
 								<div class="form-group">
 									<label for="umbrValue">umbr</label>
-										<input type="text" class="form-control" name="umbrValue" id="umbrValue">
+										<input type="text" class="form-control" name="umbr" id="umbr">
 								</div>
 								<div class="form-group">
 									<label for="BetaValue">Beta</label>
-										<input type="text" class="form-control" name="BetaValue" id="BetaValue">
+										<input type="text" class="form-control" name="beta" id="beta">
 								</div>
 								<div class="form-group">
 									<label for="maxcountValue">Max Count</label>
-										<input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+										<input type="text" class="form-control" name="maxcount" id="maxcount">	
 								</div>
 								<button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
 					  			onclick="getNeuroidProperties(1)">Submit</button>
@@ -267,19 +266,19 @@
 		   					 <form class="px-4 py-3" action="{{ url_for('input') }}" method="POST">>
 		   					 	<div class="form-group">
 									<label for="KrValue">Kr</label>
-										<input type="text" class="form-control" name="KrValue" id="KrValue">
+										<input type="text" class="form-control" name="kr" id="kr">
 								</div>
 								<div class="form-group">
 									<label for="umbrValue">umbr</label>
-										<input type="text" class="form-control" name="umbrValue" id="umbrValue">
+										<input type="text" class="form-control" name="umbr" id="umbr">
 								</div>
 								<div class="form-group">
 									<label for="BetaValue">Beta</label>
-										<input type="text" class="form-control" name="BetaValue" id="BetaValue">
+										<input type="text" class="form-control" name="beta" id="beta">
 								</div>
 								<div class="form-group">
 									<label for="maxcountValue">Max Count</label>
-										<input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+										<input type="text" class="form-control" name="maxcount" id="maxcount">	
 								</div>
 								<button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
 					  			onclick="getNeuroidProperties(2)">Submit</button>
@@ -298,19 +297,19 @@
 	   					 <form class="px-4 py-3">
 	   					 	<div class="form-group">
 								<label for="KrValue">Kr</label>
-									<input type="text" class="form-control" name="KrValue" id="KrValue">
+									<input type="text" class="form-control" name="kr" id="kr">
 							</div>
 							<div class="form-group">
 								<label for="umbrValue">umbr</label>
-									<input type="text" class="form-control" name="umbrValue" id="umbrValue">
+									<input type="text" class="form-control" name="umbr" id="umbr">
 							</div>
 							<div class="form-group">
 								<label for="BetaValue">Beta</label>
-									<input type="text" class="form-control" name="BetaValue" id="BetaValue">
+									<input type="text" class="form-control" name="beta" id="beta">
 							</div>
 							<div class="form-group">
 								<label for="maxcountValue">Max Count</label>
-									<input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+									<input type="text" class="form-control" name="maxcount" id="maxcount">	
 							</div>
 							<button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
 				  			onclick="getNeuroidProperties(3)">Submit</button>
@@ -329,19 +328,19 @@
 	   					 <form class="px-4 py-3">
 	   					 	<div class="form-group">
 								<label for="KrValue">Kr</label>
-									<input type="text" class="form-control" name="KrValue" id="KrValue">
+									<input type="text" class="form-control" name="kr" id="kr">
 							</div>
 							<div class="form-group">
 								<label for="umbrValue">umbr</label>
-									<input type="text" class="form-control" name="umbrValue" id="umbrValue">
+									<input type="text" class="form-control" name="umbr" id="umbr">
 							</div>
 							<div class="form-group">
 								<label for="BetaValue">Beta</label>
-									<input type="text" class="form-control" name="BetaValue" id="BetaValue">
+									<input type="text" class="form-control" name="beta" id="beta">
 							</div>
 							<div class="form-group">
 								<label for="maxcountValue">Max Count</label>
-									<input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+									<input type="text" class="form-control" name="maxcount" id="maxcount">	
 							</div>
 							<button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
 				  			onclick="getNeuroidProperties(4)">Submit</button>
@@ -360,19 +359,19 @@
 	   					 <form class="px-4 py-3">
 	   					 	<div class="form-group">
 								<label for="KrValue">Kr</label>
-									<input type="text" class="form-control" name="KrValue" id="KrValue">
+									<input type="text" class="form-control" name="kr" id="kr">
 							</div>
 							<div class="form-group">
 								<label for="umbrValue">umbr</label>
-									<input type="text" class="form-control" name="umbrValue" id="umbrValue">
+									<input type="text" class="form-control" name="umbr" id="umbr">
 							</div>
 							<div class="form-group">
 								<label for="BetaValue">Beta</label>
-									<input type="text" class="form-control" name="BetaValue" id="BetaValue">
+									<input type="text" class="form-control" name="beta" id="beta">
 							</div>
 							<div class="form-group">
 								<label for="maxcountValue">Max Count</label>
-									<input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+									<input type="text" class="form-control" name="maxcount" id="maxcount">	
 							</div>
 							<button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
 				  			onclick="getNeuroidProperties(5)">Submit</button>
@@ -406,7 +405,7 @@
 					<canvas id="outputChart" width="500" height="500" style="background: black;"></canvas>
 					<p id="outputData">
 						{% if results is defined %}
-						{{ results }}	
+						{{ results }}
 						{% endif %}
 						</p>
 					<script>
