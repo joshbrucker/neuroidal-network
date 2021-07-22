@@ -366,8 +366,13 @@
                </span>
             </div>
             <div class="col-sm-2" id="NeuroidVisualization">
-               <canvas id="theCanvas" width="540" height="700">
-               </canvas>
+               <svg id="connections">
+                  <line x1="0" y1="35" x2="200" y2="35"  style="stroke:pink;stroke-width:4"/>
+                  <line x1="0" y1="35" x2="200" y2="150"  style="stroke:pink;stroke-width:4"/>
+                  <line x1="0" y1="150" x2="200" y2="35"  style="stroke:lightblue;stroke-width:4"/>
+                  <line x1="0" y1="145" x2="200" y2="145"  style="stroke:lightblue;stroke-width:4"/>
+               </svg>
+
             </div>
             <div class="col-sm-1" id = "rightBoxes">
                <div class="row" id="neuronArea">
@@ -382,8 +387,12 @@
             </div>
             <div class="col-1">
                <div id="hovercard">
-                  <div style="font-size:12px">Click anywhere to edit.</div>
-                  <div><span class="type">Weight/Bias</span> is <span class="value">0.2</span><span><input type="number"/></span>.</div>
+                  <svg id="output1">
+                  <line x1="0" y1="35" x2="200" y2="35"  style="stroke:pink;stroke-width:4"/>
+                  <line x1="0" y1="145" x2="200" y2="145"  style="stroke:lightblue;stroke-width:4"/>
+                   </svg>
+                  <div style="font-size:12px">Current Weight/Bias is 0.2</div>
+                  <div><span class="type"></span><span class="value"></span><span><input type="number"/></span>.</div>
                </div>
             </div>
             <div class="col-5" id = "output" style="padding-left:225px;">
