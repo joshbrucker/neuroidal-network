@@ -14,10 +14,10 @@ def index():
 
 @app.route("/input", methods=["POST"])
 def input():
-    umbr = float(request.form["umbr"])
-    beta = float(request.form["beta"])
-    kr = float(request.form["kr"])
-    maxcount = int(request.form["maxcount"])
+    umbr = float(request.form["umbrValue"])
+    beta = float(request.form["BetaValue"])
+    kr = float(request.form["KrValue"])
+    maxcount = int(request.form["maxcountValue"])
 
     result = neuroid.run(umbr, beta, kr, maxcount)
 

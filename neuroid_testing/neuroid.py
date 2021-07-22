@@ -16,6 +16,7 @@ class Neuroid:
         self.nt_out = 0
         self.time = 0
 
+        self.sum_stream = []
         self.count1_stream = []
         self.count2_stream = []
         self.y_stream = []
@@ -30,6 +31,7 @@ class Neuroid:
 
     def run_comparator(self, inputs, weights):
         weighted_sum = self.calc_weight_sum(inputs, weights)
+        self.sum_stream.append(weighted_sum)
 
         if weighted_sum > self.umbr:
             if self.count1 > self.beta / (weighted_sum - self.umbr):
@@ -52,7 +54,7 @@ class Neuroid:
     def run_freq_demodulator(self):
         if self.y == 1:
             if self.count2 != 0:
-                self.nt_out = self.kr * (1 / self.count2)
+                self.nt_out = self.kr / self.count2
                 self.count2 = 0
         else:
             self.count2 = self.count2 + 1
@@ -67,7 +69,7 @@ class Neuroid:
         if len(inputs) != len(weights):
             raise Exception("Size of inputs and size of weights must be the same!")
 
-        for i in range(len(weights) - self.maxcount):
+        for i in range(len(weights) - self.maxcount + 1):
             self.run_comparator(inputs[i:(i + self.maxcount)], weights[i:(i + self.maxcount)])
             self.run_freq_modulator()
             self.run_freq_demodulator()
