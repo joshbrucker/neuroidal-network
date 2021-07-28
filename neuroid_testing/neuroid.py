@@ -1,13 +1,12 @@
-import numpy as np
-
 class Neuroid:
-    def __init__(self, umbr, beta, kr, maxcount, log=False):
+    def __init__(self, umbr, beta, kr, maxcount, t, log=False):
         self.log = log
 
         self.umbr = umbr
         self.beta = beta
         self.kr = kr
         self.maxcount = maxcount
+        self.t = t
 
         self.count1 = 0
         self.count2 = 0
@@ -22,26 +21,20 @@ class Neuroid:
         self.y_stream = []
         self.nt_out_stream = []
 
-    @staticmethod
-    def calc_weight_sum(inputs, weights):
-        sum = 0
-        for i in range(len(inputs)):
-            sum += inputs[i] * weights[i]
-        return sum
-
     def run_comparator(self, inputs, weights):
-        weighted_sum = self.calc_weight_sum(inputs, weights)
-        self.sum_stream.append(weighted_sum)
+        input_sum = round(sum(inputs), 3)
 
-        if weighted_sum > self.umbr:
-            if self.count1 > self.beta / (weighted_sum - self.umbr):
+        if input_sum > self.umbr:
+            if self.count1 > self.beta / (input_sum - self.umbr):
                 self.count1 = 0
             else:
                 self.count1 += 1
         else:
             self.count1 = 0
 
-        self.count1_stream.append(self.count1)
+        if self.log:
+            self.sum_stream.append(input_sum)
+            self.count1_stream.append(self.count1)
 
     def run_freq_modulator(self):
         if self.count1 == 1:
@@ -49,28 +42,30 @@ class Neuroid:
         else:
             self.y = 0
 
-        self.y_stream.append(self.y)
+        if self.log:
+            self.y_stream.append(self.y)
 
     def run_freq_demodulator(self):
         if self.y == 1:
-            if self.count2 != 0:
-                self.nt_out = self.kr / self.count2
-                self.count2 = 0
+            self.nt_out = self.kr / self.count2
+            self.count2 = 0
         else:
-            self.count2 = self.count2 + 1
+            self.count2 += 1
 
         if self.count2 > self.maxcount:
             self.nt_out = 0
 
-        self.count2_stream.append(self.count2)
         self.nt_out_stream.append(self.nt_out)
+
+        if self.log:
+            self.count2_stream.append(self.count2)
 
     def run_neuroid(self, inputs, weights):
         if len(inputs) != len(weights):
             raise Exception("Size of inputs and size of weights must be the same!")
 
-        for i in range(len(weights) - self.maxcount + 1):
-            self.run_comparator(inputs[i:(i + self.maxcount)], weights[i:(i + self.maxcount)])
+        for i in range(len(weights) - self.t + 1):
+            self.run_comparator(inputs[i:(i + self.t)], weights[i:(i + self.t)])
             self.run_freq_modulator()
             self.run_freq_demodulator()
             self.time += 1
@@ -82,3 +77,5 @@ class Neuroid:
                 print("count1 =", self.count1)
                 print("count2 =", self.count2)
                 print()
+
+        return self.nt_out_stream

@@ -1,25 +1,16 @@
 from neuroid import Neuroid
+import matplotlib.pyplot as plt
 
 
 def main():
-    inputs = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
-              0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0, -0.1,
-              -0.2, -0.3, -0.4, -0.5, -0.6, -0.7, -0.8, -0.9, -1.0, -0.9,
-              -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0.0]
+    inputs = [round(i / 1000, 3)for i in range(1001)] + [round(i / 1000, 3) for i in reversed(range(1000))]
+    weights = [0 for i in range(2001)]
 
-    weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-               1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-               1, 1, 1, 1, 1, 1, 1, 1, 1]
+    neuroid = Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=50, t=1, log=False)
+    output = neuroid.run_neuroid(inputs, weights)
 
-    neuroid = Neuroid(umbr=0.1, beta=1.25, kr=2.1, maxcount=2, log=True)
-    neuroid.run_neuroid(inputs, weights)
-
-    print("sums:         ", neuroid.sum_stream)
-    print("y values:     ", neuroid.y_stream)
-    print("count1 values:", neuroid.count1_stream)
-    print("count2 values:", neuroid.count2_stream)
-    print("nt_out values:", neuroid.nt_out_stream)
+    plt.plot(output)
+    plt.show()
 
 
 if __name__ == "__main__":
